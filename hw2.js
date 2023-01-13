@@ -63,7 +63,7 @@ let catalog = [
   const add_to_basket = function (id, amount) {
     for (let i = 0; i < catalog.length; i++) {
       if (catalog[i].id == undefined) {
-        return console.log("Такого товара нет");
+        return /* console.log("Такого товара нет"); */
       }
       if (catalog[i].id == id) {
         new_basket_good = {
