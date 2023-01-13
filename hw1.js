@@ -1,31 +1,20 @@
-function check_number(n) {
-    if ((+n === 2) || (+n === 3) || (+n === 5) || (+n === 7)) {
-        return n
-    }
-    else if ((+n % 2 === 0) || (+n % 3 === 0) || (+n % 5 === 0) || (+n % 7 === 0)) {
-        return "Делится";
-    }
-    else {
-        return n
-    }
-}
-
-function add_number() {   
-    let amount_of_numbers = [] 
-    for (let i = 0; amount_of_numbers.length < process.argv[2]; i++) {
-        // console.log('выполняем')
-        if (check_number(i) !== "Делится") {
-            amount_of_numbers.push(check_number(i))
+const un = process.argv[2]
+function show_numbers(number) {
+    let numbersArray = []
+    for (let searchable_number = 0; numbersArray.length < +number; searchable_number++) {
+        for (let denominator = 0; denominator <= searchable_number; denominator++) {
+            // console.log(`Делим - ${searchable_number} на - ${denominator}`)
+            // console.log("Остаток деления " + (searchable_number % denominator))
+            if ((searchable_number % denominator == 0) && (denominator != 1)) {
+                break
+            }
+            if ((searchable_number-denominator == 1) && (searchable_number !=1)) {
+                numbersArray.push(searchable_number)   
+            }
         }
+        
     }
-    return amount_of_numbers 
+    return numbersArray
 }
 
-check_number(process.argv[2])
-console.log(add_number())
-
-// Вызываемая функция должна принимать параметр - количество первых простых чисел, которые необходимо найти.
-// Функция должна возвращать массив, содержащий первые простые числа, количество которых соответствует переданному при вызове аргументу.
-// Для нахождения простых чисел необхоимо использовать один из видов цикла, показанных на уроке. Не должны использоваться статические, предварительно рассчитанные наборы простых чисел.
-// Примечание: простыми в математике называются числа, которые делятся без остатка только на 1 и на самих себя. Например, такими числами являются: 2, 3, 5, 7, 11, 13 и т.д. Для проверки делимости одного числа на другое можно использовать оператор получения остатка от деления %, в случае если он дает 0 в результате, делимость подтверждается:
-// if (4 % 2 === 0) { console.log('И все таки оно делится!') };
+console.log(show_numbers(un))
